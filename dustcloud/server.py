@@ -110,27 +110,6 @@ def process_runtime_map(data):
     else:
         print("Missing map_size in ROCKROBO_MAP__ message")
         #return
-
-    path_size = re.search(b'PATH=(.+?)\\n', data[next:next + 32])
-    if path_size:
-        next = next + path_size.span(1)[1] + 1
-        path_size = int(path_size.group(1).decode())
-        path_content = data[next:next + path_size]
-        next = next + path_size
-    else:
-        print("Missing path_size in ROCKROBO_MAP__ message")
-        #return
-
-    grid_size = re.search(b'GRID=(.+?)\\n', data[next:next + 32])
-    if grid_size:
-        next = next + grid_size.span(1)[1] + 1
-        grid_size = int(grid_size.group(1).decode())
-        grid_content = data[next:next + grid_size]
-        next = next + grid_size
-    else:
-        print("Missing grid_size in ROCKROBO_MAP__ message")
-        #return
-
     
     if next != len(data):
         print("Parse error, discarding ROCKROBO_MAP__ message")
