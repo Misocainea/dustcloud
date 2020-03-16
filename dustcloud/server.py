@@ -113,6 +113,8 @@ def process_runtime_map(data):
     
     if next != len(data):
         print("Parse error, discarding ROCKROBO_MAP__ message")
+        print(next)
+        print(len(data))
         return
 
     navmap = build_map(slam_content, map_content)
