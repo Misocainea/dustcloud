@@ -110,12 +110,6 @@ def process_runtime_map(data):
     else:
         print("Missing map_size in ROCKROBO_MAP__ message")
         #return
-    
-    if next != len(data):
-        print("Parse error, discarding ROCKROBO_MAP__ message")
-        print(next)
-        print(len(data))
-        return
 
     navmap = build_map(slam_content, map_content)
     device_maps[int(did)] = navmap.getvalue()
